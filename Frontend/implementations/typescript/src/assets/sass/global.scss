@@ -1,0 +1,180 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'ToyotaDisplay', sans-serif;
+    scroll-behavior: smooth;
+}
+
+main ::-webkit-scrollbar {
+    display: none;
+}
+
+@font-face {
+    font-family: 'ToyotaDisplay';
+    src: url('../font/toyota/ToyotaDisplay_Bd.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ToyotaDisplay';
+    src: url('../font/toyota/ToyotaDisplay_Rg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    background-color: var(--body);
+
+    &.freeze {
+        * {
+            cursor: not-allowed;
+            user-select: none;
+            pointer-events: none;
+        }
+    }
+}
+
+
+.heading {
+    color: var(--txt-dark);
+    font-weight: var(--fw-bold);
+
+    &.small {
+        font-size: var(--fs-medium);
+    }
+
+    &.medium {
+        font-size: var(--fs-medium-large);
+    }
+
+    &.large {
+        font-size: var(--fs-large);
+    }
+
+    &.extra-large {
+        font-size: var(--fs-extra-large);
+    }
+}
+
+
+p,
+a,
+li {
+    font-size: var(--fs-medium);
+    font-weight: var(--fw-medium);
+    color: var(--txt-light);
+    line-height: var(--lh-medium);
+    list-style: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+}
+
+a:link,
+a:visited,
+a:active,
+a:focus,
+a:hover {
+    color: var(--txt-light);
+}
+
+button,
+.btn {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: var(--fs-medium);
+    font-weight: var(--fw-medium);
+    border-radius: 50px;
+    cursor: pointer;
+    width: fit-content;
+    flex-shrink: 0;
+    gap: 10px;
+    @include flex(center, center);
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    &.primary {
+        border: 1px solid var(--black);
+        background-color: var(--black);
+        color: var(--white);
+
+        &:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+    }
+    
+    &.secondary {
+        color: var(--black);
+        border: 1px solid var(--black);
+
+        &:hover {
+            background-color: var(--black);
+            color: var(--white)!important;
+        }
+    }
+
+    svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+    }
+}
+
+div img {
+    width: 100%;
+}
+
+
+.flex-left {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.flex-right {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.round {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    flex-shrink: 0;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

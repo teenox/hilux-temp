@@ -1,0 +1,500 @@
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+/* 15-inch windows laptops */
+@media screen and (max-width: 1536px) {
+
+    main {
+        padding: 10px 20px 0px 0px;
+
+        &.static-mode {
+            .left-panel {
+                .three-d {
+                   height: calc(100% - (90px + 75px));
+                }
+            }
+        }
+
+        .left-panel {
+            padding: 0px 20px;
+
+            .three-d {
+                height: calc(100% - 90px);
+            }
+
+            .angles {
+                margin-top: 15px;
+
+                .angle {
+                    height: 60px;
+                    width: 100px;
+                }
+            }
+        }
+
+        .right-panel {
+            width: 410px;
+        }
+
+        .bottom-panel {
+            height: 90px;
+            padding: 35px 20px;
+            width: calc(100% - (410px + 20px));
+        }
+    }
+}
+
+
+/* tablets screens */
+@media screen and (max-width: 1250px) {
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .wrapper {
+        overflow-y: auto;
+    }
+
+    main {
+        height: fit-content;
+        flex-direction: column;
+        overflow: unset;
+        padding: 0px 0px 30px 0px;
+
+        &.static-mode {
+            .left-panel {
+                .three-d {
+                   height: fit-content;
+
+                    .controls {
+                        justify-content: space-between;
+                    }
+                }
+
+                .angles {
+                    padding: 0px 10px;
+                    width: calc(100% + 20px);
+                    margin: 10px 0px 0px -10px;
+                }
+            }
+        }
+
+        .left-panel {
+            height: auto;
+            padding: 10px;
+            position: sticky;
+            top: 0px;
+            left: 0px;
+            z-index: 10;
+            overflow: unset;
+            background-color: var(--body);
+            transition: padding-bottom 0.5s ease-in-out;
+
+            &.fade {
+                padding: 10px 10px 40px 10px;
+                background: linear-gradient(to bottom, var(--body) 90%, transparent);
+            }
+
+            .three-d {
+                height: fit-content;
+
+                .canvas {
+                    height: 520px;
+                    position: relative;
+
+                    .fullscreen-btn {
+                        width: 25px;
+                        height: 25px;
+                        top: 10px;
+                        right: 10px;
+                        background-color: rgba(0, 0, 0, 0.3);
+                        backdrop-filter: blur(5px);
+                        color: var(--white);
+
+                        svg {
+                            @include svg-size(20px);
+                        }
+                    }
+
+                    .doors-toggle {
+                        left: 45%;
+                        top: 10px;
+
+                        &.open-active {
+                            &::before {
+                                left: 48px;
+                            }
+                        }
+
+                        &::before,
+                        .btn {
+                            width: 45px;
+                            height: 25px;
+                        }
+                    }
+
+                    .zoom-out-btn {
+                        left: 32%;
+                        top: 10px;
+                        width: 33px;
+                    }
+
+                    .loader {
+                        .content {
+                            padding-bottom: 30px;
+
+                            .icon {
+                                svg {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+
+                            .spinner {
+                                width: 35px;
+                            }
+                        }
+                    }
+
+                    .static-frame {
+                        .scroll-btns {
+                            bottom: 10px;
+                            height: 32px;
+
+                            .counter,
+                            .btn {
+                                width: 25px;
+                                
+                                svg {
+                                    @include svg-size(16px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-panel {
+            height: auto;
+            width: 100%;
+            overflow-y: unset;
+            padding: 0px 10px 20px 10px;
+
+            .components {
+                &.accessories,
+                &.conversions {
+                    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+                    .accessory,
+                    .conversion {
+                        .image {
+                            height: 150px;
+                        }
+
+                        button {
+                            width: 25px;
+
+                            svg {
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .bottom-panel {
+            width: 100%;
+            position: unset;
+            height: fit-content;
+            padding: 20px 0px;
+            border-top: 1px solid #ddd;
+
+            .inner-container {
+                flex-direction: column;
+                gap: 20px;
+
+                .information {
+                    width: 100%;
+                    padding: 0px 20px;
+                    align-items: stretch;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .info {
+                        border-radius: var(--br-small);
+                        background-color: var(--white);
+                        padding: 10px 40px;
+
+                        &:first-child {
+                            padding-left: 40px;
+                        }
+
+                        &::before {
+                            display: none;
+                        }
+
+                        p {
+                            line-height: normal;
+                        }
+                    }
+                }
+
+                .finish-build {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 15px;
+                    padding: 0px 15px 15px 15px;
+
+                    .price,
+                    .btn {
+                        width: 100%;
+                    }
+
+                    .btn {
+                        height: 70px;
+                    }
+                }
+            }
+        }
+    }
+
+    .model-selection {
+        .content {
+            overflow-y: auto;
+
+            .header {
+                border-bottom: 1px solid var(--grey);
+                padding: 10px 30px;
+            }
+
+            .models {
+                gap: 50px;
+                flex-wrap: nowrap;
+                padding: 30px;
+
+                .model {
+                    width: 50%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+}
+
+
+/* mobile screens */
+@media screen and (max-width: 800px) {
+
+    main {
+
+        .left-panel {
+            .three-d {
+
+                .canvas {
+                    height: 235px; /* to change  - increase it when using pixelstreaming video can fit*/
+                }
+
+                .controls {
+                    margin: 10px 0px 0px -10px;
+                    position: unset;
+                    padding: 0px 10px;
+                    width: calc(100% + 20px);
+                    height: fit-content;
+                    @include flex(center, left);
+                    overflow-x: auto;
+                    gap: 10px;
+
+                    .exterior-interior-toggle {
+                        position: relative;
+                        top: unset;
+                        left: unset;
+                        transform: unset;
+
+                        &::before {
+                            width: 70px;
+                            height: 30px;
+                        }
+
+                        &.interior-active {
+                            &::before {
+                                left: 73px;
+                            }
+                        }
+
+                        .btn {
+                            width: 70px;
+                            height: 30px;
+                        }
+                    }
+
+                    .environment-toggle {
+                        position: relative;
+                        bottom: unset;
+                        left: unset;
+
+                        &.visible {
+                            .environments-modal {
+                                bottom: 59%;
+                                opacity: 1;
+                                pointer-events: all;
+                            }
+                        }
+
+                        .environments-modal {
+                            position: fixed;
+                            width: calc(100% - 8px);
+                            transform: translateX(-50%);
+                            height: fit-content;
+                            left: 50%;
+                            bottom: 40%;
+                            opacity: 0;
+                            pointer-events: none;
+                            z-index: 999;
+                            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+                            border-radius: var(--br-small);
+                            padding: 10px 10px 5px 10px;
+
+                            .environments {
+                                width: 100%;
+                                display: grid;
+                                grid-template-columns: repeat(3, 1fr);
+
+                                .environment {
+                                    width: 100%;
+                                    max-width: 100%;
+
+                                    .image {
+                                        height: 80px
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .day-night {
+                        position: relative;
+                        bottom: unset;
+                        left: unset;
+                    }
+
+                    .config-mode-btn {
+                        position: relative;
+                        bottom: unset;
+                        right: unset;
+                    }
+                }
+            }
+        }
+
+        .right-panel {
+
+            .components {
+                &.accessories,
+                &.conversions {
+                    grid-template-columns: repeat(2, 1fr);
+
+                    .accessory,
+                    .conversion {
+                        .image {
+                            height: 120px;
+                        }
+
+                        button {
+                            width: 25px;
+
+                            svg {
+                                width: 15px;
+                                height: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .bottom-panel {
+            width: 100%;
+            position: unset;
+            height: fit-content;
+            padding: 20px 0px;
+            border-top: 1px solid #ddd;
+
+            .inner-container {
+                flex-direction: column;
+                gap: 20px;
+
+                .information {
+                    width: 100%;
+                    padding: 0px 10px;
+                    align-items: stretch;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .info {
+                        border-radius: var(--br-small);
+                        background-color: var(--white);
+                        padding: 10px 20px;
+
+                        &:first-child {
+                            padding-left: 20px;
+                        }
+
+                        &::before {
+                            display: none;
+                        }
+
+                        p {
+                            line-height: normal;
+                        }
+                    }
+                }
+
+                .finish-build {
+                    width: 100%;
+                    flex-direction: column;
+                    gap: 15px;
+                    padding: 0px 15px 15px 15px;
+
+                    .price,
+                    .btn {
+                        width: 100%;
+                    }
+
+                    .btn {
+                        height: 55px;
+                    }
+                }
+            }
+        }
+    }
+
+    .model-selection {
+        .content {
+
+            .models {
+                flex-direction: column;
+                gap: 20px;
+
+                .model {
+                    width: 100%;
+                    
+                    &:first-child {
+                        margin-bottom: 40px;
+                    }
+                }
+            }
+        }
+    }
+
+}
