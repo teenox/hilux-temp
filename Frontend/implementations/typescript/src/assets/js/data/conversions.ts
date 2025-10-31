@@ -57,7 +57,7 @@ export const conversions: Conversion[] = [
         description: 'Description here...',
         image: 'assets/components/conversions/technician-canopy-dropside.png',
         price: 95304,
-        ueMessage: "full canopy",
+        ueMessage: "field technician canopy with half dropside",
         doorsOpen: true,
         unAllowedAccessories: [44444]
     },
@@ -67,7 +67,7 @@ export const conversions: Conversion[] = [
         description: 'Description here...',
         image: 'assets/components/conversions/technician-canopy-lid.png',
         price: 105742,
-        ueMessage: "field technician canopy",
+        ueMessage: "field technician canopy with half dropside and lid",
         doorsOpen: true,
         unAllowedAccessories: [44444]
     },

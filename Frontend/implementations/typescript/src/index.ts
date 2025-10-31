@@ -47,6 +47,7 @@ document.body.onload = async function() {
             StreamerId: pixelSessionId,
             AutoPlayVideo: true,
             AutoConnect: true,
+            HideUI: true,
             StartVideoMuted: true,
             HoveringMouse: true,
             WaitForStreamer: false,

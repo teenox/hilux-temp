@@ -21,7 +21,7 @@ main {
     &.static-mode {
         .left-panel {
             .three-d {
-                height: calc(100% - (150px + 70px));
+                height: calc(100% - (100px + 90px + 20px));
 
                 .canvas {
                     .zoom-out-btn,
@@ -47,6 +47,10 @@ main {
             .angles {
                 display: flex;
             }
+        }
+
+        .bottom-panel {
+            height: 100px;
         }
     }
 
